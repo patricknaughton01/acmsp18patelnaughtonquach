@@ -30,9 +30,10 @@ public class AccelListener extends IntentService implements SensorEventListener 
     @Override
     public void onSensorChanged(SensorEvent event) {
         for(int i=0; i<3; i++) {
-            if(Math.abs(event.values[i])>thresholdValue) {
+            if(Math.abs(event.values[i]-9.8)>thresholdValue) {
                 //Send request to SafeTrek
                 isAbove = true;
+                new AlertRequest().execute();
             }
         }
     }
