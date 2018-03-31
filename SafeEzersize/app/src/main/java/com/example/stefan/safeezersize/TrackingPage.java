@@ -47,7 +47,7 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean sendRequestAccel = false;
+        boolean sendRequestAccel = false; //placeholder for sending Request to SafeTrek
         for(int i=0 ; i<3; i++) {
             if (event.values[i] > this.thresholdValue){
                 sendRequestAccel = true;
