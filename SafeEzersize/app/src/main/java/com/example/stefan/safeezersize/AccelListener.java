@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 public class AccelListener extends IntentService implements SensorEventListener {
     private Sensor accel;
     private SensorManager mSensorManager;
-    private final float thresholdValue = 10;
+    private final float bigThresholdValue = 10;
     private boolean isAbove = false;
 
 
@@ -30,7 +30,7 @@ public class AccelListener extends IntentService implements SensorEventListener 
     @Override
     public void onSensorChanged(SensorEvent event) {
         for(int i=0; i<3; i++) {
-            if(Math.abs(event.values[i]-9.8)>thresholdValue) {
+            if(Math.abs(event.values[i]-9.8)>bigThresholdValue) {
                 //Send request to SafeTrek
                 isAbove = true;
                 new AlertRequest().execute();
