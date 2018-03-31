@@ -1,6 +1,7 @@
 package com.example.stefan.safeezersize;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,7 +12,7 @@ import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TrackingPage extends AppCompatActivity implements SensorEventListener{
+public class TrackingPage extends AppCompatActivity implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor accel;
     private final float thresholdValue = 10;
@@ -43,13 +44,14 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Intent mServiceIntent = new Intent(getActiviy(), AccelListener.class);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         boolean sendRequestAccel = false; //placeholder for sending Request to SafeTrek
-        for(int i=0 ; i<3; i++) {
-            if (event.values[i] > this.thresholdValue){
+        for (int i = 0; i < 3; i++) {
+            if (event.values[i] > this.thresholdValue) {
                 sendRequestAccel = true;
             }
         }
@@ -59,6 +61,7 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         //do something when accuracy changes
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -70,3 +73,4 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
         super.onPause();
         mSensorManager.unregisterListener(this);
     }
+}
