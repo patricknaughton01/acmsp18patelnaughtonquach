@@ -58,6 +58,8 @@ public class TrackingPage extends AppCompatActivity {
         Button stopButton = findViewById(R.id.stop);
 
         chronometer = (Chronometer)findViewById(R.id.chronometer);
+        chronometer.setBase(SystemClock.elapsedRealtime()+stopTime);
+        chronometer.start();
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,12 +71,11 @@ public class TrackingPage extends AppCompatActivity {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chronometer.stop();
+                stopTime = SystemClock.elapsedRealtime();
                 launchStopScreen();
             }
         });
-
-        chronometer.setBase(SystemClock.elapsedRealtime()+stopTime);
-        chronometer.start();
     }
 
     private void launchPauseScreen(){
@@ -88,6 +89,8 @@ public class TrackingPage extends AppCompatActivity {
         finish();
     }
 
-
+    public long getStopTime() {
+        return stopTime;
+    }
 
 }
