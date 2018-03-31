@@ -4,17 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vppatel.wustl.edu.acm18uiexperiment.GoScreen2">
+    tools:context="com.example.stefan.safeezersize.GoScreen2">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/go button"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="157dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/GoButton"
         android:layout_width="88dp"
         android:layout_height="83dp"
         app:srcCompat="@drawable/go_button"
