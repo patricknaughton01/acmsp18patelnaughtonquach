@@ -9,14 +9,18 @@ import android.hardware.SensorManager;
 //import android.location.Location;
 //import android.location.LocationListener;
 //import android.location.LocationManager;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 
 public class TrackingPage extends AppCompatActivity {
     private SensorManager mSensorManager;
     private Sensor accel;
+    Chronometer chronometer;
+    private long stopTime=0;
 
 //    LocationManager locManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 //
@@ -52,10 +56,13 @@ public class TrackingPage extends AppCompatActivity {
   
         Button pauseButton = findViewById(R.id.pause);
         Button stopButton = findViewById(R.id.stop);
-      
+
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chronometer.stop();
+                stopTime = SystemClock.elapsedRealtime();
                 launchPauseScreen();
             }
         });
@@ -65,6 +72,9 @@ public class TrackingPage extends AppCompatActivity {
                 launchStopScreen();
             }
         });
+
+        chronometer.setBase(SystemClock.elapsedRealtime()+stopTime);
+        chronometer.start();
     }
 
     private void launchPauseScreen(){
