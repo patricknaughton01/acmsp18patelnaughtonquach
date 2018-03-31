@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".AccelListener"
+            android:exported="false"/>
         <activity android:name=".TrackingPage"></activity>
         <activity android:name=".GoScreen2"></activity>
         <activity android:name=".IntroPage1"></activity>

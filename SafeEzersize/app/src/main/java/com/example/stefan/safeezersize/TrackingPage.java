@@ -14,10 +14,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class TrackingPage extends AppCompatActivity implements SensorEventListener {
+public class TrackingPage extends AppCompatActivity {
     private SensorManager mSensorManager;
     private Sensor accel;
-    private final float thresholdValue = 10;
 
 //    LocationManager locManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 //
@@ -46,11 +45,14 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        //Intent mServiceIntent = new Intent(getActiviy(), AccelListener.class);
 
+        Intent mServiceIntent = new Intent(TrackingPage.this
+                , AccelListener.class);
+        startService(mServiceIntent);
+  
         Button pauseButton = findViewById(R.id.pause);
         Button stopButton = findViewById(R.id.stop);
-
+      
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,30 +78,6 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
         finish();
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        boolean sendRequestAccel = false; //placeholder for sending Request to SafeTrek
-        for (int i = 0; i < 3; i++) {
-            if (event.values[i] > this.thresholdValue) {
-                sendRequestAccel = true;
-            }
-        }
-    }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        //do something when accuracy changes
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mSensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mSensorManager.unregisterListener(this);
-    }
 }
