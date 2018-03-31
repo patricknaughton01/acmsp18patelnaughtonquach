@@ -1,6 +1,7 @@
 package com.example.stefan.safeezersize;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -43,6 +44,7 @@ public class TrackingPage extends AppCompatActivity implements SensorEventListen
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Intent mServiceIntent = new Intent(getActiviy(), AccelListener.class);
     }
 
     @Override

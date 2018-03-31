@@ -18,7 +18,7 @@ public class GoScreen2 extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mServiceIntent = new Intent(getActiviy(), AccelListener.class);
+
             }
         });
     }
