@@ -14,6 +14,8 @@ public class AccelListener extends IntentService implements SensorEventListener 
     private SensorManager mSensorManager;
     private final float bigThresholdValue = 10;
     private boolean isAbove = false;
+    private float smallThresholdValue = 5;
+    private long lastTime = 0;
 
 
     public AccelListener() {
@@ -31,8 +33,15 @@ public class AccelListener extends IntentService implements SensorEventListener 
     public void onSensorChanged(SensorEvent event) {
         for(int i=0; i<3; i++) {
             if(Math.abs(event.values[i]-9.8)>bigThresholdValue) {
-                //Send request to SafeTrek
+                //Send request to SafeTrek if its a big crash
                 isAbove = true;
+                new AlertRequest().execute();
+            }
+            long now = System.currentTimeMillis();
+            if(Math.abs(event.values[i]-9.8)>smallThresholdValue) {
+                lastTime = now;
+            }
+            if(now-lastTime>900000L) {
                 new AlertRequest().execute();
             }
         }
@@ -40,13 +49,5 @@ public class AccelListener extends IntentService implements SensorEventListener 
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    public boolean getIsAbove() {
-        return isAbove;
-    }
-
-    public void resetIsAbove() {
-        isAbove = false;
     }
 }
