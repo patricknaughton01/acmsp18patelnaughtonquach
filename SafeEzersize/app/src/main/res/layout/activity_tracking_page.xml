@@ -7,4 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".TrackingPage">
 
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pause"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="85dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginStart="176dp"
+        android:text="stop"
+        app:layout_constraintStart_toEndOf="@+id/pause"
+        tools:layout_editor_absoluteY="445dp" />
+
 </android.support.constraint.ConstraintLayout>

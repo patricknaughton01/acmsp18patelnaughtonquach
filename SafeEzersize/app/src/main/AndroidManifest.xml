@@ -24,6 +24,10 @@
             android:name=".AccelListener"
             android:exported="false"/>
         <activity android:name=".TrackingPage"></activity>
+        <activity android:name=".GoScreen2"></activity>
+        <activity android:name=".IntroPage1"></activity>
+        <activity android:name=".PausePage"></activity>
+        <activity android:name=".StopPage"></activity>
     </application>
 
 </manifest>

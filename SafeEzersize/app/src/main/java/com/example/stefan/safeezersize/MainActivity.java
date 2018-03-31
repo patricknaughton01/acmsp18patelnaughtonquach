@@ -1,5 +1,7 @@
 package com.example.stefan.safeezersize;
 
+import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +19,13 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertRequest().execute();
+                launchGoScreen();
             }
         });
+    }
+
+    private void launchGoScreen(){
+        Intent intent = new Intent(this, GoScreen2.class);
+        startActivity(intent);
     }
 }

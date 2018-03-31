@@ -18,8 +18,13 @@ public class GoScreen2 extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                launchTrackingPage();
             }
         });
+    }
+
+    private void launchTrackingPage(){
+        Intent intent = new Intent(this, TrackingPage.class);
+        startActivity(intent);
     }
 }

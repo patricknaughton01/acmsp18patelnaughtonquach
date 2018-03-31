@@ -1,10 +1,12 @@
-package vppatel.wustl.edu.acm18uiexperiment;
+package com.example.stefan.safeezersize;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.stefan.safeezersize.R;
 
 public class UI extends AppCompatActivity {
 

@@ -11,6 +11,8 @@ import android.hardware.SensorManager;
 //import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class TrackingPage extends AppCompatActivity {
     private SensorManager mSensorManager;
@@ -43,9 +45,37 @@ public class TrackingPage extends AppCompatActivity {
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
         Intent mServiceIntent = new Intent(TrackingPage.this
                 , AccelListener.class);
         startService(mServiceIntent);
+  
+        Button pauseButton = findViewById(R.id.pause);
+        Button stopButton = findViewById(R.id.stop);
+      
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchPauseScreen();
+            }
+        });
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchStopScreen();
+            }
+        });
+    }
+
+    private void launchPauseScreen(){
+        Intent intent = new Intent(this, PausePage.class);
+        startActivity(intent);
+    }
+
+    private void launchStopScreen(){
+        Intent intent = new Intent(this, StopPage.class);
+        startActivity(intent);
+        finish();
     }
 
 
