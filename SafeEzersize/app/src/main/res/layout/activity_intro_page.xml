@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context="vppatel.wustl.edu.acm18uiexperiment.IntroPage1">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
+        android:layout_width="91dp"
+        android:layout_height="121dp"
         app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="36dp" />
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="43dp" />
 </android.support.constraint.ConstraintLayout>
