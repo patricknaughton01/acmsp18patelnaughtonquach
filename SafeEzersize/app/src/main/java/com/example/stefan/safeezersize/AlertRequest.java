@@ -12,6 +12,7 @@ public class AlertRequest extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... urls) {
         try {
+            System.out.println("Doing Background");
             URL url = new URL("https://api-sandbox.safetrek.io/v1/alarms");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -27,9 +28,9 @@ public class AlertRequest extends AsyncTask<Void, Void, String> {
             services.put("medical", "true");
 
             JSONObject location = new JSONObject();
-            services.put("lat", 38.9582381);
-            services.put("long", -77.0244287);
-            services.put("accuracy", 5);
+            location.put("lat", 38.9582381);
+            location.put("long", -77.0244287);
+            location.put("accuracy", 5);
 
             JSONObject jsonParam = new JSONObject();
             jsonParam.put("services", services);
@@ -48,5 +49,11 @@ public class AlertRequest extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
             return e.toString();
         }
+    }
+    protected void onPostExecute(String response) {
+        if(response == null) {
+            response = "THERE WAS AN ERROR";
+        }
+        System.out.println(response);
     }
 }
