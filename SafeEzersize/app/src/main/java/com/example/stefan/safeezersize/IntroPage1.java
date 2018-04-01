@@ -1,4 +1,4 @@
-package vppatel.wustl.edu.acm18uiexperiment;
+package com.example.stefan.safeezersize;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
